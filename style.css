@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.game-container {
+    margin: auto;
+    width: 50%;
+}
+
+#gameImage {
+    max-width: 100%;
+    height: auto;
+}
+
+#mapGuess {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

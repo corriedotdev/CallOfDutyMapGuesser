@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Game GeoGuessr</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Game Name Placeholder</h1>
+        <div id="score">1/10</div>
+    </div>
+    <div class="game-container">
+        <img id="gameImage" src="" alt="Game Screenshot">
+        <select id="mapGuess">
+            <!-- Options will be populated here -->
+        </select>
+        <button id="submitGuess">Submit Guess</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Manually list the paths to your map images
+    const mapImages = [
+    'Games/Modernwarfare2/bailout.png',
+'Games/Modernwarfare2/derail.png',
+'Games/Modernwarfare2/favela.png',
+'Games/Modernwarfare2/invasion.png',
+'Games/Modernwarfare2/karachi.png',
+'Games/Modernwarfare2/overgrown.png',
+'Games/Modernwarfare2/rust.png',
+'Games/Modernwarfare2/scrapyard.png',
+'Games/Modernwarfare2/shipment.png',
+'Games/Modernwarfare2/subbase.png',
+'Games/Modernwarfare2/underground.png',
+
+        // Add more image paths here
+    ];
+    let currentImage = 0;
+    let score = 0;
+
+    function loadNewImage() {
+        let randomIndex = Math.floor(Math.random() * mapImages.length);
+        let imagePath = mapImages[randomIndex];
+        let mapName = imagePath.split('/').pop().split('.')[0]; // Extracts map name from file name
+
+        document.getElementById('gameImage').src = imagePath;
+
+        // Update dropdown
+        let select = document.getElementById('mapGuess');
+        select.innerHTML = '';
+        mapImages.forEach(imgPath => {
+            let mapOption = imgPath.split('/').pop().split('.')[0];
+            let option = document.createElement('option');
+            option.value = mapOption;
+            option.textContent = mapOption;
+            select.appendChild(option);
+        });
+
+        currentImage++;
+        updateScore();
+    }
+
+    function updateScore() {
+        document.getElementById('score').textContent = `${currentImage}/10`;
+    }
+
+    document.getElementById('submitGuess').addEventListener('click', function() {
+        let selectedMap = document.getElementById('mapGuess').value;
+        let correctMap = mapImages[currentImage - 1].split('/').pop().split('.')[0];
+
+        if (selectedMap === correctMap) {
+            alert('Correct!');
+            score++;
+        } else {
+            alert('Wrong! The correct map was ' + correctMap);
+        }
+
+        if (currentImage < 10) {
+            loadNewImage();
+        } else {
+            alert('Game over! Your score: ' + score);
+            currentImage = 0;
+            score = 0;
+            loadNewImage();
+        }
+    });
+
+    loadNewImage();
+});
+
+
+</script>
