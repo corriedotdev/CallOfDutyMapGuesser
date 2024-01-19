@@ -1,10 +1,45 @@
+
+/* Gradient Animation */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 body {
     font-family: Arial, sans-serif;
+    color:white;
     text-align: center;
+   /* Animated Gradient Background */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 200% 200%; /* Adjusted background size */
+    animation: gradient 15s ease infinite;
+    background-repeat: no-repeat; /* Prevents the background from tiling */
+    background-attachment: fixed; /* Keeps the background fixed during */
 }
 
 .header {
     margin-bottom: 20px;
+}
+
+.heading-text {
+    text-align: center;
+    font-size: 36px; /* Adjust size as needed */
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.instructions {
+    text-align: center;
+    font-size: 18px; /* Adjust size as needed */
+    margin-bottom: 30px;
 }
 
 .game-container {
@@ -21,3 +56,125 @@ body {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+#result {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.correct {
+    color: green;
+}
+
+.wrong {
+    color: red;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: transparent;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.site-name {
+    font-size: 24px;
+    margin-right: 20px; /* Space between text and logo */
+}
+
+.logo img {
+    height: 50px; /* Adjust as needed */
+}
+
+/* Rest of your CSS for game-selection and game-tile */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.site-name {
+    font-size: 24px;
+    margin-right: 20px; /* Space between text and logo */
+}
+
+.logo img {
+    height: 50px; /* Adjust as needed */
+}
+
+/* Rest of your CSS for game-selection and game-tile */
+/* ... (existing styles) ... */
+
+.game-selection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-gap: 20px; /* Spacing between tiles */
+    padding: 20px;
+}
+
+.game-tile {
+    background-color: black; /* Light background for the tiles */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensures the image corners are also rounded */
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow */
+}
+
+.game-tile img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid black; /* Optional: Adds a line between image and title */
+}
+
+.game-tile .game-title {
+    padding: 10px; /* Padding inside the tile */
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+}
+
+/* ... (existing styles) ... */
+
+.game-selection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-gap: 20px; /* Spacing between tiles */
+    padding: 20px;
+    width: 50%; /* Set the width of the grid to 50% of its container */
+    margin: auto; /* Center the grid horizontally */
+}
+
+.game-tile {
+    background-color: #f5f5f5; /* Light background for the tiles */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensures the image corners are also rounded */
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow */
+    /* Adjust the size of each game tile if necessary */
+}
+
+.game-tile img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid white; /* Optional: Adds a line between image and title */
+}
+
+.game-tile .game-title {
+    padding: 10px; /* Padding inside the tile */
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+}
+
+/* ... (any additional styles) ... */
+
