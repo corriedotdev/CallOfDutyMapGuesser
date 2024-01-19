@@ -5,18 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Game Guesser |🎮</title> 
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;0,800;1,400;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="header">
-        <h1>Modern Warfare 3</h1>
+        <h1>Guess that map!</h1>
+        <h2>Modern Warfare 3</h2>
         <div id="score">1/10</div>
     </div>
     <div class="game-container">
         <img id="gameImage" src="" alt="Game Screenshot">
-        <select id="mapGuess">
-            <!-- Options will be populated here -->
-        </select>
-        <button id="submitGuess">Submit Guess</button>
+        
+        <!-- Replacing select with text input -->
+        <input type="text" id="mapGuess" placeholder="enter guess">
+        <br>
+        <button id="submitGuess">Submit</button>
         <div id="result"></div>
     </div>
     
@@ -34,9 +39,9 @@
 'Games/ModernWarfare3/subbase.png',
 'Games/ModernWarfare3/underground.png',
 
-            // ... other images ...
         ];
     </script>
+    
     <script src="script.js"></script>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXX" crossorigin="anonymous"></script>

@@ -12,18 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let imagePath = mapImages[currentImageIndex];
         document.getElementById('gameImage').src = imagePath;
-
-        // Update dropdown
-        let select = document.getElementById('mapGuess');
-        select.innerHTML = '';
-        mapImages.forEach(imgPath => {
-            let mapName = imgPath.split('/').pop().split('.')[0];
-            let option = document.createElement('option');
-            option.value = mapName;
-            option.textContent = mapName;
-            select.appendChild(option);
-        });
-
         document.getElementById('result').textContent = '';
         updateScore();
     }
@@ -34,13 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function displayResult(message, className) {
         let resultDiv = document.getElementById('result');
-        resultDiv.innerHTML = message; // Use innerHTML instead of textContent
+        resultDiv.innerHTML = message;
         resultDiv.className = className;
 
-        // Countdown before loading new image
         let countdown = 3;
         const countdownInterval = setInterval(function() {
-            resultDiv.innerHTML = message + '<br>New map in ' + countdown; // Adding a line break
+            resultDiv.innerHTML = message + '<br>New map in ' + countdown;
             countdown--;
             if (countdown < 0) {
                 clearInterval(countdownInterval);
@@ -51,16 +38,39 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.getElementById('submitGuess').addEventListener('click', function() {
-        let selectedMap = document.getElementById('mapGuess').value;
-        let correctMap = mapImages[currentImageIndex].split('/').pop().split('.')[0];
+        let inputMapName = document.getElementById('mapGuess').value;
 
-        if (selectedMap === correctMap) {
+        if (!/^[a-zA-Z\s]+$/.test(inputMapName)) {
+            alert("Please enter a valid map name (letters and spaces only).");
+            return;
+        }
+
+        inputMapName = inputMapName.toLowerCase().replace(/\s+/g, '');
+        let correctMap = mapImages[currentImageIndex].split('/').pop().split('.')[0].toLowerCase().replace(/\s+/g, '');
+
+        if (inputMapName === correctMap) {
             displayResult('Correct, the map was ' + correctMap + '!', 'correct');
             score++;
         } else {
             displayResult('Wrong! The correct map was ' + correctMap, 'wrong');
         }
     });
+
+        // Get the input and button elements
+        const input = document.getElementById('mapGuess');
+        const submitButton = document.getElementById('submitGuess');
+    
+        // Event listener for keypress on the input field
+        input.addEventListener('keypress', function(event) {
+            // Check if the key pressed is the Enter key
+            if (event.key === 'Enter') {
+                // Trigger the click event on the submit button
+                submitButton.click();
+            }
+        });
+
+    // Automatically focus on the mapGuess input
+    document.getElementById('mapGuess').focus();
 
     loadNewImage();
 });
