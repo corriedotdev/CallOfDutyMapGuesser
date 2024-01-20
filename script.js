@@ -97,6 +97,22 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
+        let gameImage = document.getElementById('gameImage');
+    
+        // Reset styles for the new image
+        gameImage.style.opacity = '0';
+        gameImage.style.transform = 'translateX(100%)'; // Start off-screen to the right
+        gameImage.style.animationName = ''; // Clear any previous animation
+    
+        // Set the new image source
+        gameImage.src = mapImages[currentImageIndex];
+        
+        // Once the image is loaded, start the animation
+        gameImage.onload = () => {
+            gameImage.style.opacity = '1';
+            gameImage.style.transform = 'translateX(0)'; // Move to the visible area
+            gameImage.style.animationName = 'swipeInFromRight'; // Apply swipe-in animation
+        };
         
         isResultDisplayed = false;
         let imagePath = mapImages[currentImageIndex];
@@ -137,15 +153,17 @@ document.addEventListener('DOMContentLoaded', function() {
             createConfetti();
             startResultCountdown(`Correct, starting next map in `);
         } else if (className === 'wrong') {
-            gameImageContainer.classList.add('shake');
+            // Ensure the shake class is added for a wrong answer
+            gameImageContainer.style.animationName = 'shake';
             setTimeout(() => {
-                gameImageContainer.classList.remove('shake');
-            }, 820);
+                gameImageContainer.style.animationName = ''; // Reset animation
+            }, 820); // Duration of the shake animation
             startResultCountdown(`${message}, starting next map in `);
         } else {
             startResultCountdown(`Time is up! Starting next map in `);
         }
     }
+    
     
 
     document.getElementById('submitGuess').addEventListener('click', function() {
