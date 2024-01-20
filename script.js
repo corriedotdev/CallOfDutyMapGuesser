@@ -17,20 +17,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     setInterval(keepFocusOnInput, 100);
 
-    function startGuessCountdown() {
-        let timeLeft = 10;
-        document.getElementById('countdown').textContent = `${timeLeft}`;
-        guessCountdown = setInterval(function() {
-            timeLeft--;
-            document.getElementById('countdown').textContent = `${timeLeft}`;
+function startGuessCountdown() {
+    clearInterval(guessCountdown); // Clear any existing interval
 
-            if (timeLeft <= 0) {
-                clearInterval(guessCountdown);
-                displayResult('Time is up! Moving to the next map...', 'wrong');
-                moveToNextImage();
-            }
-        }, 1000);
-    }
+    let timeLeft = 10;
+    document.getElementById('countdown').textContent = `${timeLeft}`;
+    guessCountdown = setInterval(function() {
+        timeLeft--;
+        document.getElementById('countdown').textContent = `${timeLeft}`;
+
+        if (timeLeft <= 0) {
+            clearInterval(guessCountdown);
+            displayResult('Time is up! Moving to the next map..', 'wrong');
+           // commenting this as it was being called twice moveToNextImage();
+        }
+    }, 1000);
+}
+
 
     function createConfetti() {
         const numberOfParticles = 30;
@@ -81,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentImageIndex++;
                 loadNewImage();
                 waitingForNextImage = false;
-            }, 3000);
+            }, 4000);
         } else {
             setTimeout(() => {
                 endGame();
@@ -140,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('gameImage').style.animationName = 'swipeOutToLeft';
             }
     
-            if (countdown <= 0) {
+            if (countdown <= 1) {
                 clearInterval(countdownInterval);
                 if (currentImageIndex + 1 < mapImages.length) {
                     setTimeout(() => {
@@ -155,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     
-
     function displayResult(message, className) {
         let resultDiv = document.getElementById('result');
         let gameImageContainer = document.getElementById('gameImage');
@@ -164,17 +166,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
         if (className === 'correct') {
             createConfetti();
-            score++;
+            // Removed score++ as it's handled in the submitGuess click event
         } else if (className === 'wrong') {
-            gameImageContainer.classList.add('shake');
-            setTimeout(() => {
-                gameImageContainer.classList.remove('shake');
-            }, 820);
+        
+            startResultCountdown(`${message}, starting next map in `);
+
+            return; // Early return to prevent starting countdown immediately
         }
-    
+
         startResultCountdown(`${message}, starting next map in `);
         isResultDisplayed = true;
     }
+    
+
     
 
     document.getElementById('submitGuess').addEventListener('click', function() {
