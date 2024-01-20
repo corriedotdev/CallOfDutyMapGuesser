@@ -16,6 +16,7 @@
 <body>
     <nav class="navbar">
         <button class="home-button" onclick="location.href='./index.html'" type="button">Home</button>
+        <button class="home-button" onclick="location.href='./index.html'" type="button">Restart</button>
 
         <!-- Other navbar content here -->
     </nav>
@@ -23,9 +24,14 @@
     <div class="header">
         <h1>Guess that map!</h1>
         <h2>Modern Warfare 3</h2>
-        <div id="score">1/10</div>
     </div>
-    <div class="game-container">
+
+    <div id="startCountdown"></div>
+    <button id="startButton">START</button>
+    
+    <div class="game-container" id="game-container">
+        <div id="score">1/10</div>
+
         <div id="confetti-container"></div>
         <div id="image-container">
             <img id="gameImage" src="" alt="Game Screenshot">
