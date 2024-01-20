@@ -22,6 +22,33 @@
     }
 }
 
+@keyframes swipeInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes swipeOutToLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+#gameImage {
+    animation-duration: 1s; /* Adjust the timing as needed */
+    animation-fill-mode: forwards;
+}
+
 .particle {
     position: absolute;
     width: 10px;
@@ -176,7 +203,6 @@ h2{
     border: 3px solid white; /* Adds a border */
     border-radius: 25px; /* Beveled corners */
     margin-top:20px;
-
     padding: 2px 30px; /* Padding inside the button */
     font-weight: 800; /* Bold text */
     font-family: 'Montserrat', sans-serif; /* Montserrat font */
@@ -213,13 +239,39 @@ body {
 }
 
 .navbar {
-    background-color: transparent;
-    color: white;
+    width: 50%;
+    margin: 0 auto; /* Center the navbar */
+    background-color: rgba(255, 255, 255, 0.5); /* White with opacity */
+    height: 45px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 10px 0;
+    justify-content: flex-start;
+    padding: 0 10px;
 }
+
+.home-button {
+    background-color: transparent; /* Makes the background transparent */
+    font-family: 'Montserrat', sans-serif; /* Uses Montserrat font */
+    font-size:1em;
+    color: white; /* Sets the text color */
+    border: 0 solid white; /* Adds a border */
+    border-radius: 25px; /* Beveled corners */
+    font-weight: 200; /* Bold text */
+    font-family: 'Montserrat', sans-serif; /* Montserrat font */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.home-button:hover {
+    background-color: white; /* Background color on hover */
+    color: black; /* Text color on hover */
+    font-weight: 800; /* Bold text */
+
+}
+
+
+/* Add additional styling as needed */
+
 
 .site-name {
     font-size: 24px;

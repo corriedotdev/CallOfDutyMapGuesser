@@ -11,10 +11,11 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="home">
-            <img src="media/return.png" alt="Logo" href="index.html"> <!-- Replace logo.png with your actual logo file -->
-        </div>
+        <button class="home-button" onclick="location.href='./index.html'" type="button">Home</button>
+
+        <!-- Other navbar content here -->
     </nav>
+
     <div class="header">
         <h1>Guess that map!</h1>
         <h2>Modern Warfare 3</h2>
@@ -26,7 +27,7 @@
         <input type="text" id="mapGuess" placeholder="enter guess">
         <br>
         <button id="submitGuess">Submit</button>
-
+        <div id=gamescore></div>
         <div id="countdown">10</div>
         <div id="result"></div>
     </div>

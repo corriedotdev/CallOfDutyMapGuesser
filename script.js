@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
+        
         isResultDisplayed = false;
         let imagePath = mapImages[currentImageIndex];
         document.getElementById('gameImage').src = imagePath;
