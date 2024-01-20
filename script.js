@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
     function moveToNextImage() {
-        if (waitingForNextImage) return;
+        if (waitingForNextImage || isResultDisplayed) return;
     
         waitingForNextImage = true;
         clearInterval(guessCountdown);
@@ -79,16 +79,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentImageIndex++;
                 loadNewImage();
                 waitingForNextImage = false;
-            }, 3000); // 3-second delay before loading new image
+            }, 3000);
         } else {
-            // Wait for the final result to be displayed before ending the game
             setTimeout(() => {
                 endGame();
-            }, 4000); // Wait an additional time after the result countdown
+            }, 3000);
         }
-        document.getElementById('mapGuess').value = '';
-        isResultDisplayed = false;
     }
+    
     
 
     function loadNewImage() {
@@ -96,7 +94,21 @@ document.addEventListener('DOMContentLoaded', function() {
             endGame();
             return;
         }
-        
+    
+        let gameImage = document.getElementById('gameImage');
+        // Reset for new image
+        gameImage.style.opacity = '0';
+        gameImage.style.transform = 'translateX(100%)'; // Start off-screen to the right
+        gameImage.style.animationName = '';
+    
+        setTimeout(() => {
+            gameImage.src = mapImages[currentImageIndex];
+            gameImage.onload = () => {
+                gameImage.style.opacity = '1';
+                gameImage.style.transform = 'translateX(0)'; // Move to visible area
+                gameImage.style.animationName = 'swipeInFromRight'; // Start swipe-in
+            };
+        }, 1100); // Synchronize with the end of the swipe-out animation
         
         isResultDisplayed = false;
         let imagePath = mapImages[currentImageIndex];
@@ -110,22 +122,35 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateScore() {
         document.getElementById('score').textContent = `${currentImageIndex + 1}/${mapImages.length}`;
     }
-
+    
     function startResultCountdown(baseMessage) {
         let countdown = 3;
         let resultDiv = document.getElementById('result');
         resultDiv.innerHTML = baseMessage + countdown;
-
+    
         const countdownInterval = setInterval(() => {
             countdown--;
             resultDiv.innerHTML = baseMessage + countdown;
-
+    
+            if (countdown === 2) {
+                document.getElementById('gameImage').style.animationName = 'swipeOutToLeft';
+            }
+    
             if (countdown <= 0) {
                 clearInterval(countdownInterval);
-                moveToNextImage();
+                if (currentImageIndex + 1 < mapImages.length) {
+                    setTimeout(() => {
+                        currentImageIndex++;
+                        loadNewImage();
+                    }, 1000); // Delay to allow for swipe animation
+                } else {
+                    endGame();
+                }
             }
         }, 1000);
     }
+    
+    
 
     function displayResult(message, className) {
         let resultDiv = document.getElementById('result');
@@ -135,16 +160,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
         if (className === 'correct') {
             createConfetti();
-            startResultCountdown(`Correct, starting next map in `);
+            score++;
         } else if (className === 'wrong') {
             gameImageContainer.classList.add('shake');
             setTimeout(() => {
                 gameImageContainer.classList.remove('shake');
             }, 820);
-            startResultCountdown(`${message}, starting next map in `);
-        } else {
-            startResultCountdown(`Time is up! Starting next map in `);
         }
+    
+        startResultCountdown(`${message}, starting next map in `);
+        isResultDisplayed = true;
     }
     
 
