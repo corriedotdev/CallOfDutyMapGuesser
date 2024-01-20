@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    document.addEventListener('contextmenu', event => event.preventDefault());
+   // document.addEventListener('contextmenu', event => event.preventDefault());
 
     setInterval(keepFocusOnInput, 100);
 
@@ -84,7 +84,7 @@ function startGuessCountdown() {
                 currentImageIndex++;
                 loadNewImage();
                 waitingForNextImage = false;
-            }, 4000);
+            }, 3000); // this was set to 4000 f
         } else {
             setTimeout(() => {
                 endGame();
@@ -190,10 +190,7 @@ function startGuessCountdown() {
             gameContainer.classList.remove('shake');
         }, 1820); // Match this with the CSS animation duration
     }
-    
-    
-    
-    
+
 
     document.getElementById('submitGuess').addEventListener('click', function() {
         if (isResultDisplayed || waitingForNextImage) return;
