@@ -10,6 +10,59 @@
         background-position: 0% 50%;
     }
 }
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-10px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(10px);
+    }
+}
+
+.particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ffcc00;
+    opacity: 0.7;
+    border-radius: 50%;
+    animation: fall linear;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(500px);
+        opacity: 0;
+    }
+}
+
+#confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    pointer-events: none; /* Allows clicks to pass through */
+}
+
+/* ... rest of your styles, including .particle and @keyframes fall ... */
+
+.shake {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+
+::selection {
+    color: rgb(0, 140, 255);
+    background: white;
+  }
 
 body {
     font-family: 'Montserrat',Arial, sans-serif;
@@ -35,7 +88,14 @@ h2{
     font-weight: 600;
     font-size:2.4em;
     display: block;
-    margin-top:-30px;
+    margin-top:-50px;
+}
+
+#score{
+    font-family: 'Montserrat';
+    font-weight: 800;
+    font-size:1.8em;
+    padding:20px;
 }
 
 .header {
@@ -64,6 +124,22 @@ h2{
 #gameImage {
     max-width: 100%;
     height: auto;
+    border-radius: 30px; /* Beveled corners */
+
+}
+
+#result{
+    font-family: 'Montserrat';
+    font-weight: 800;
+    font-size:2em;
+}
+
+#countdown{
+    font-family: 'Montserrat';
+    font-weight: 800;
+    font-size:4em;
+    font-style:italic;
+    margin-top:50px;
 }
 
 
@@ -147,11 +223,14 @@ body {
 
 .site-name {
     font-size: 24px;
-    margin-right: 20px; /* Space between text and logo */
+    margin-left: 20px; /* Space between text and logo */
 }
 
-.logo img {
-    height: 50px; /* Adjust as needed */
+
+
+.home img {
+    height: 30px; /* Adjust as needed */
+    text-align: left;
 }
 
 /* Rest of your CSS for game-selection and game-tile */

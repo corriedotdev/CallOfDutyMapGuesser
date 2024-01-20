@@ -1,19 +1,87 @@
 document.addEventListener('DOMContentLoaded', function() {
     let currentImageIndex = 0;
     let score = 0;
+    let guessCountdown;
+    let isResultDisplayed = false;
+    let waitingForNextImage = false;
 
-    function loadNewImage() {
-        if (currentImageIndex >= mapImages.length) {
+    const mapGuessInput = document.getElementById('mapGuess');
+
+    function keepFocusOnInput() {
+        if (document.activeElement !== mapGuessInput) {
+            mapGuessInput.focus();
+        }
+    }
+
+    setInterval(keepFocusOnInput, 100);
+
+    function startGuessCountdown() {
+        let timeLeft = 10;
+        document.getElementById('countdown').textContent = `${timeLeft}`;
+        guessCountdown = setInterval(function() {
+            timeLeft--;
+            document.getElementById('countdown').textContent = `${timeLeft}`;
+
+            if (timeLeft <= 0) {
+                clearInterval(guessCountdown);
+                displayResult('Time is up! Moving to the next map...', 'wrong');
+                moveToNextImage();
+            }
+        }, 1000);
+    }
+
+    function createConfetti() {
+        const numberOfParticles = 30;
+        const confettiContainer = document.getElementById('confetti-container');
+
+        for (let i = 0; i < numberOfParticles; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = `${Math.random() * confettiContainer.offsetWidth}px`;
+            particle.style.top = `${Math.random() * confettiContainer.offsetHeight}px`;
+            particle.style.animationDuration = `${Math.random() * 2 + 1}s`;
+            particle.style.animationDelay = `${Math.random() * 0.5}s`;
+            particle.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+
+            confettiContainer.appendChild(particle);
+
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        }
+    }
+
+    function moveToNextImage() {
+        if (waitingForNextImage) return;
+
+        waitingForNextImage = true;
+        clearInterval(guessCountdown);
+        
+        if (currentImageIndex + 1 < mapImages.length) {
+            setTimeout(() => {
+                currentImageIndex++;
+                loadNewImage();
+                waitingForNextImage = false;
+            }, 3000);
+        } else {
             alert('Game over! Your score: ' + score);
             currentImageIndex = 0;
             score = 0;
-            return;
+            loadNewImage();
+            waitingForNextImage = false;
         }
+        document.getElementById('mapGuess').value = '';
+        isResultDisplayed = false;
+    }
 
+    function loadNewImage() {
+        isResultDisplayed = false;
         let imagePath = mapImages[currentImageIndex];
         document.getElementById('gameImage').src = imagePath;
         document.getElementById('result').textContent = '';
+        document.getElementById('countdown').textContent = '';
         updateScore();
+        startGuessCountdown();
     }
 
     function updateScore() {
@@ -22,30 +90,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function displayResult(message, className) {
         let resultDiv = document.getElementById('result');
+        let gameImageContainer = document.getElementById('gameImage');
+
         resultDiv.innerHTML = message;
         resultDiv.className = className;
 
-        let countdown = 3;
-        const countdownInterval = setInterval(function() {
-            resultDiv.innerHTML = message + '<br>New map in ' + countdown;
-            countdown--;
-            if (countdown < 0) {
-                clearInterval(countdownInterval);
-                currentImageIndex++;
-                loadNewImage();
-            }
-        }, 1000);
+        if (className === 'correct') {
+            createConfetti();
+        }
+
+        if (className === 'wrong') {
+            gameImageContainer.classList.add('shake');
+            setTimeout(() => {
+                gameImageContainer.classList.remove('shake');
+            }, 820);
+        }
     }
 
     document.getElementById('submitGuess').addEventListener('click', function() {
-        let inputMapName = document.getElementById('mapGuess').value;
+        if (isResultDisplayed || waitingForNextImage) return;
 
-        if (!/^[a-zA-Z\s]+$/.test(inputMapName)) {
-            alert("Please enter a valid map name (letters and spaces only).");
-            return;
-        }
-
-        inputMapName = inputMapName.toLowerCase().replace(/\s+/g, '');
+        clearInterval(guessCountdown);
+        let inputMapName = document.getElementById('mapGuess').value.toLowerCase().replace(/\s+/g, '');
         let correctMap = mapImages[currentImageIndex].split('/').pop().split('.')[0].toLowerCase().replace(/\s+/g, '');
 
         if (inputMapName === correctMap) {
@@ -54,23 +120,16 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             displayResult('Wrong! The correct map was ' + correctMap, 'wrong');
         }
+        isResultDisplayed = true;
+        moveToNextImage();
     });
 
-        // Get the input and button elements
-        const input = document.getElementById('mapGuess');
-        const submitButton = document.getElementById('submitGuess');
-    
-        // Event listener for keypress on the input field
-        input.addEventListener('keypress', function(event) {
-            // Check if the key pressed is the Enter key
-            if (event.key === 'Enter') {
-                // Trigger the click event on the submit button
-                submitButton.click();
-            }
-        });
+    document.getElementById('mapGuess').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            document.getElementById('submitGuess').click();
+        }
+    });
 
-    // Automatically focus on the mapGuess input
     document.getElementById('mapGuess').focus();
-
     loadNewImage();
 });
