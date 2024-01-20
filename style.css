@@ -10,11 +10,13 @@
         background-position: 0% 50%;
     }
 }
+
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-100px); }
-    50% { transform: translateX(100px); }
-    75% { transform: translateX(-100px); }
+    25% { transform: translateX(-50px); }
+    50% { transform: translateX(50px); }
+    75% { transform: translateX(-50px); }
+    
 }
 
 .shake {

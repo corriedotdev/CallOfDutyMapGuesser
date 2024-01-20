@@ -1,0 +1,23 @@
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-50px); }
+    50% { transform: translateX(50px); }
+    75% { transform: translateX(-50px); }
+    
+}
+
+.shake {
+    animation: shake 1.82s; /* This duration should match the timeout in the JavaScript */
+}
+
+function shakeScreen() {
+    const gameContainer = document.getElementById('mapGuess'); // or the specific element you want to shake
+
+    gameContainer.classList.add('shake');
+
+    setTimeout(() => {
+        gameContainer.classList.remove('shake');
+    }, 820); // Duration of the shake animation
+}
+
+

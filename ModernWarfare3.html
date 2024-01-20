@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;0,800;1,400;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;0,800;1,400;1,900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <nav class="navbar">
         <button class="home-button" onclick="location.href='./index.html'" type="button">Home</button>
@@ -23,25 +27,29 @@
     </div>
     <div class="game-container">
         <div id="confetti-container"></div>
-        <img id="gameImage" src="" alt="Game Screenshot">
-        <input type="text" id="mapGuess" placeholder="enter guess">
+        <div id="image-container">
+            <img id="gameImage" src="" alt="Game Screenshot">
+        </div>
+        <input type="text" id="mapGuess" autocomplete="off" placeholder="enter guess">
         <br>
         <button id="submitGuess">Submit</button>
         <div id=gamescore></div>
         <div id="countdown">10</div>
         <div id="result"></div>
     </div>
-    
+
     <script>
         const mapImages = [
-        'Games/ModernWarfare3/afghan.png',
-'Games/ModernWarfare3/overgrown.png',
-'Games/ModernWarfare3/overpass.png'
+            'Games/ModernWarfare3/afghan.png',
+            'Games/ModernWarfare3/overgrown.png',
+            'Games/ModernWarfare3/overpass.png'
 
         ];
     </script>
     <script src="script.js"></script>
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXX"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
