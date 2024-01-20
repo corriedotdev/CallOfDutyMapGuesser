@@ -90,10 +90,19 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('countdown').style.display = 'none';
         document.getElementById('result').style.display = 'none';
 
+        document.getElementById('score').style.display = 'none';
+
+
         // Display the final score
         let finalScoreDiv = document.getElementById('gamescore');
         finalScoreDiv.style.display = 'block';
         finalScoreDiv.textContent = `You scored ${score}/${mapImages.length}`;
+
+        //play confetti animation and some fireworks
+        //display the  score 
+
+
+
     }
 
 
@@ -197,14 +206,14 @@ document.addEventListener('DOMContentLoaded', function () {
             // Delay the start of the countdown to allow the shake animation to play
             setTimeout(() => {
                 shakeScreen(); // Add shake effect
-                startResultCountdown(`${message}, starting next map in `);
+                startResultCountdown(`${message}, starting next map `);
             }, 100); // Delay should be equal to or slightly more than the shake animation duration
 
             return; // Early return
         }
 
         // For correct guesses or other scenarios
-        startResultCountdown(`${message}, starting next map in `);
+        startResultCountdown(`${message}, starting next map `);
         isResultDisplayed = true;
     }
 
