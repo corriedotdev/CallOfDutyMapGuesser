@@ -44,6 +44,13 @@
     }
 }
 
+
+
+.offscreen-right {
+    transform: translateX(100%); /* Move image to the right, out of view */
+}
+
+
 #gameImage {
     animation-duration: 1s; /* Adjust the timing as needed */
     animation-fill-mode: forwards;
@@ -224,11 +231,11 @@ h2{
 }
 
 .correct {
-    color: green;
+    color: rgb(46, 143, 46);
 }
 
 .wrong {
-    color: red;
+    color: rgb(136, 41, 41);
 }
 
 body {
@@ -241,13 +248,16 @@ body {
 .navbar {
     width: 50%;
     margin: 0 auto; /* Center the navbar */
-    background-color: rgba(255, 255, 255, 0.5); /* White with opacity */
-    height: 45px;
+    background-color:transparent; /* Semi-transparent white */
+    backdrop-filter: blur(50px); /* Apply blur effect */
+    height: 85px;
+    
     display: flex;
     align-items: center;
     justify-content: flex-start;
     padding: 0 10px;
 }
+
 
 .home-button {
     background-color: transparent; /* Makes the background transparent */
@@ -256,6 +266,7 @@ body {
     color: white; /* Sets the text color */
     border: 0 solid white; /* Adds a border */
     border-radius: 25px; /* Beveled corners */
+    
     font-weight: 200; /* Bold text */
     font-family: 'Montserrat', sans-serif; /* Montserrat font */
     cursor: pointer; /* Changes cursor to pointer on hover */
