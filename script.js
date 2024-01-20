@@ -88,41 +88,60 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('score').textContent = `${currentImageIndex + 1}/${mapImages.length}`;
     }
 
+    function startResultCountdown(baseMessage) {
+        let countdown = 3;
+        let resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = baseMessage + countdown;
+
+        const countdownInterval = setInterval(() => {
+            countdown--;
+            resultDiv.innerHTML = baseMessage + countdown;
+
+            if (countdown <= 0) {
+                clearInterval(countdownInterval);
+                moveToNextImage();
+            }
+        }, 1000);
+    }
+
     function displayResult(message, className) {
         let resultDiv = document.getElementById('result');
         let gameImageContainer = document.getElementById('gameImage');
-
-        resultDiv.innerHTML = message;
+    
         resultDiv.className = className;
-
+    
         if (className === 'correct') {
             createConfetti();
-        }
-
-        if (className === 'wrong') {
+            startResultCountdown(`Correct, starting next map in `);
+        } else if (className === 'wrong') {
             gameImageContainer.classList.add('shake');
             setTimeout(() => {
                 gameImageContainer.classList.remove('shake');
             }, 820);
+            startResultCountdown(`${message}, starting next map in `);
+        } else {
+            startResultCountdown(`Time is up! Starting next map in `);
         }
     }
+    
 
     document.getElementById('submitGuess').addEventListener('click', function() {
         if (isResultDisplayed || waitingForNextImage) return;
-
+    
         clearInterval(guessCountdown);
         let inputMapName = document.getElementById('mapGuess').value.toLowerCase().replace(/\s+/g, '');
         let correctMap = mapImages[currentImageIndex].split('/').pop().split('.')[0].toLowerCase().replace(/\s+/g, '');
-
+    
         if (inputMapName === correctMap) {
-            displayResult('Correct, the map was ' + correctMap + '!', 'correct');
+            displayResult('Correct', 'correct');
             score++;
         } else {
-            displayResult('Wrong! The correct map was ' + correctMap, 'wrong');
+            displayResult(`Wrong, the map was ${correctMap}`, 'wrong');
         }
         isResultDisplayed = true;
         moveToNextImage();
     });
+    
 
     document.getElementById('mapGuess').addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
