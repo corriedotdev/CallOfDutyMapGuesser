@@ -51,30 +51,52 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function endGame() {
+        // Hide game elements
+        document.getElementById('gameImage').style.display = 'none';
+        document.getElementById('mapGuess').style.display = 'none';
+        document.getElementById('submitGuess').style.display = 'none';
+        document.getElementById('countdown').style.display = 'none';
+        document.getElementById('result').style.display = 'none';
+    
+        // Display the final score
+        let finalScoreDiv = document.getElementById('gamescore');
+        finalScoreDiv.style.display = 'block';
+        finalScoreDiv.textContent = `You scored ${score}/${mapImages.length}`;
+    }
+    
+    
+
+    
     function moveToNextImage() {
         if (waitingForNextImage) return;
-
+    
         waitingForNextImage = true;
         clearInterval(guessCountdown);
-        
+    
         if (currentImageIndex + 1 < mapImages.length) {
             setTimeout(() => {
                 currentImageIndex++;
                 loadNewImage();
                 waitingForNextImage = false;
-            }, 3000);
+            }, 3000); // 3-second delay before loading new image
         } else {
-            alert('Game over! Your score: ' + score);
-            currentImageIndex = 0;
-            score = 0;
-            loadNewImage();
-            waitingForNextImage = false;
+            // Wait for the final result to be displayed before ending the game
+            setTimeout(() => {
+                endGame();
+            }, 4000); // Wait an additional time after the result countdown
         }
         document.getElementById('mapGuess').value = '';
         isResultDisplayed = false;
     }
+    
 
     function loadNewImage() {
+        if (currentImageIndex >= mapImages.length) {
+            endGame();
+            return;
+        }
+        
         isResultDisplayed = false;
         let imagePath = mapImages[currentImageIndex];
         document.getElementById('gameImage').src = imagePath;
