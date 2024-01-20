@@ -94,7 +94,7 @@
 
 
 ::selection {
-    color: rgb(0, 140, 255);
+    color: #e73c7e;
     background: white;
   }
 
@@ -138,10 +138,11 @@ h2{
 
 .heading-text {
     text-align: center;
-    font-size: 36px; /* Adjust size as needed */
-    font-weight: bold;
+    font-size: 60px; /* Adjust size as needed */
+    font-weight: 800;
     margin-top: 200px;
     margin-bottom: 10px;
+    
 }
 
 .instructions {
@@ -159,6 +160,7 @@ h2{
     max-width: 100%;
     height: auto;
     border-radius: 30px; /* Beveled corners */
+    filter: drop-shadow(5px 5px 5px #222);
 
 }
 
@@ -239,7 +241,7 @@ h2{
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family:'Montserrat', Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -296,13 +298,6 @@ body {
 
 /* Rest of your CSS for game-selection and game-tile */
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 
 .site-name {
     font-size: 24px;
@@ -334,6 +329,7 @@ body {
     width: 100%;
     height: auto;
     border-bottom: 1px solid black; /* Optional: Adds a line between image and title */
+
 }
 
 .game-tile .game-title {
@@ -341,6 +337,7 @@ body {
     text-align: center;
     font-weight: bold;
     color: #333;
+    
 }
 
 /* ... (existing styles) ... */

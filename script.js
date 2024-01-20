@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
             mapGuessInput.focus();
         }
     }
+    
+    document.addEventListener('contextmenu', event => event.preventDefault());
 
     setInterval(keepFocusOnInput, 100);
 
@@ -87,8 +89,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    
-
     function loadNewImage() {
         if (currentImageIndex >= mapImages.length) {
             endGame();
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
         gameImage.style.opacity = '0';
         gameImage.style.transform = 'translateX(100%)'; // Start off-screen to the right
         gameImage.style.animationName = '';
-    
+        
         setTimeout(() => {
             gameImage.src = mapImages[currentImageIndex];
             gameImage.onload = () => {
@@ -115,10 +115,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('gameImage').src = imagePath;
         document.getElementById('result').textContent = '';
         document.getElementById('countdown').textContent = '';
+        
+        // Clear the input box for the next guess
+        document.getElementById('mapGuess').value = '';
+    
         updateScore();
         startGuessCountdown();
     }
-
+    
     function updateScore() {
         document.getElementById('score').textContent = `${currentImageIndex + 1}/${mapImages.length}`;
     }
