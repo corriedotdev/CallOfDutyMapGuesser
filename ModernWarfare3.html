@@ -18,18 +18,18 @@
 <body>
     <nav class="navbar">
         <button class="home-button" onclick="location.href='./index.html'" type="button">Home</button>
-        <button class="home-button" onclick="location.href='./index.html'" type="button">Restart</button>
-
-        <!-- Other navbar content here -->
+        <div id="title">GameGuess.io</div>
     </nav>
+
 
     <div class="header">
         <h1>Guess that map!</h1>
         <h2>Modern Warfare 3</h2>
     </div>
 
+    <button id="startButton">start</button>
     <div id="startCountdown"></div>
-    <button id="startButton">START</button>
+
     
     <div class="game-container" id="game-container">
         <div id="score">1/10</div>
@@ -63,11 +63,23 @@
             </a>
         </div> -->
         <div class="text-links">
-            <a href="link1.html">Contact</a>
-            <a href="link2.html">Privacy Policy</a>
-            <a href="link3.html">Cookie Policy</a>
-            <a href="link3.html">Terms</a>
+            <div class="link-container">
+                <a href="https://www.corrie.dev">Contact</a>
+                <div class="hide">corrie.dev is my site 👋 </div>
+            </div>
 
+
+            <div class="link-container">
+                <a href="http://www.cjgstudio.com/policy">Policies</a>
+                <div class="hide">Client side website, so just adsense!</div>
+            </div>
+            <div class="link-container">
+                <a href="link3.html">Terms</a>
+            </div>
+            <div class="link-container">
+                <a href="https://www.buymeacoffee.com/corriedotdev">☕</a>
+                <div class="hide">Help fund the server!</div>
+            </div>
         </div>
     </footer>
     

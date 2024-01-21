@@ -34,13 +34,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
 
-    function keepFocusOnInput() {
-        if (document.activeElement !== mapGuessInput) {
-            mapGuessInput.focus();
-        }
-    }
+     function keepFocusOnInput() {
+         if (document.activeElement !== mapGuessInput) {
+             mapGuessInput.focus();
+         }
+     }
 
-    // document.addEventListener('contextmenu', event => event.preventDefault());
+    //document.addEventListener('contextmenu', event => event.preventDefault());
 
     setInterval(keepFocusOnInput, 100);
 
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 gameImage.style.transform = 'translateX(0)'; // Move to visible area
                 gameImage.style.animationName = 'swipeInFromRight'; // Start swipe-in
             };
-        }, 1100); // Synchronize with the end of the swipe-out animation
+        }, 160); // Synchronize with the end of the swipe-out animation
 
         isResultDisplayed = false;
         let imagePath = mapImages[currentImageIndex];

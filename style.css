@@ -106,7 +106,7 @@ body {
 
 h1{
     font-family: 'Montserrat';
-    font-weight: 500;
+    font-weight: 300;
     font-size:4em;
 }
 
@@ -126,6 +126,14 @@ h2{
     padding:20px;
 }
 
+#title{
+    font-family: 'Montserrat';
+    font-weight: 300;
+    font-size:1.8em;
+    text-align: center;
+    margin:0 auto;
+}
+
 .header {
     margin-bottom: 20px;
 }
@@ -134,15 +142,15 @@ h2{
     text-align: center;
     font-size: 60px; /* Adjust size as needed */
     font-weight: 800;
-    margin-top: 200px;
-    margin-bottom: 10px;
+    margin-top: 10%;
+    margin-bottom: 2%;
     
 }
 
 .instructions {
     text-align: center;
     font-size: 18px; /* Adjust size as needed */
-    margin-bottom: 100px;
+    margin-bottom: 5%;
 }
 
 .game-container {
@@ -177,7 +185,7 @@ h2{
         font-weight: 800;
         font-size:6em;
         font-style:italic;
-        margin-top:50px;
+        margin-top:5%;
 }
 
 #mapGuess {
@@ -229,16 +237,17 @@ h2{
 #startButton {
     background-color: transparent; /* Makes the background transparent */
     font-family: 'Montserrat', sans-serif; /* Uses Montserrat font */
-    font-size:1.2em;
+    font-size:3em;
     color: white; /* Sets the text color */
-    border: 3px solid white; /* Adds a border */
-    border-radius: 25px; /* Beveled corners */
-    margin-top:20px;
-    padding: 2px 30px; /* Padding inside the button */
+    border: 7px solid white; /* Adds a border */
+    border-radius: 100px; /* Beveled corners */
+    margin-top:5%;
     font-weight: 800; /* Bold text */
     font-family: 'Montserrat', sans-serif; /* Montserrat font */
     cursor: pointer; /* Changes cursor to pointer on hover */
     transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    width: 200px;
+    height: 200px;
 }
 
 #startButton:hover {
@@ -288,7 +297,6 @@ body {
     background-color:transparent; /* Semi-transparent white */
     backdrop-filter: blur(50px); /* Apply blur effect */
     height: 85px;
-
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -358,7 +366,7 @@ footer {
     color: white; /* Sets the text color */
     border: 0 solid white; /* Adds a border */
     border-radius: 25px; /* Beveled corners */
-    
+    float:left;
     font-weight: 600; /* Bold text */
     font-family: 'Montserrat', sans-serif; /* Montserrat font */
     cursor: pointer; /* Changes cursor to pointer on hover */
@@ -386,9 +394,6 @@ footer {
     text-align: left;
 }
 
-/* Rest of your CSS for game-selection and game-tile */
-
-
 .site-name {
     font-size: 24px;
     margin-right: 20px; /* Space between text and logo */
@@ -398,40 +403,6 @@ footer {
     height: 50px; /* Adjust as needed */
 }
 
-/* Rest of your CSS for game-selection and game-tile */
-/* ... (existing styles) ... */
-
-.game-selection {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    grid-gap: 20px; /* Spacing between tiles */
-    padding: 20px;
-}
-
-.game-tile {
-    background-color: black; /* Light background for the tiles */
-    border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Ensures the image corners are also rounded */
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow */
-}
-
-.game-tile img {
-    width: 100%;
-    height: auto;
-    border-bottom: 1px solid black; /* Optional: Adds a line between image and title */
-
-}
-
-.game-tile .game-title {
-    padding: 10px; /* Padding inside the tile */
-    text-align: center;
-    font-weight: bold;
-    color: #333;
-    
-}
-
-/* ... (existing styles) ... */
-
 .game-selection {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns */
@@ -439,28 +410,69 @@ footer {
     padding: 20px;
     width: 50%; /* Set the width of the grid to 50% of its container */
     margin: auto; /* Center the grid horizontally */
+
 }
 
 .game-tile {
-    background-color: #f5f5f5; /* Light background for the tiles */
+    position: relative;
+    background: rgba(255, 255, 255, 0.445);
     border-radius: 10px; /* Rounded corners */
     overflow: hidden; /* Ensures the image corners are also rounded */
     box-shadow: 0px 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow */
     /* Adjust the size of each game tile if necessary */
 }
 
+.game-tile a {
+    text-decoration: none; /* This removes the underline from all <a> tags within .game-tile */
+    color: white;
+
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px; /* Enlarged size */
+    display: none;
+    color: white; /* Adjust color as needed */
+    z-index: 10; /* Ensures the button appears above the image */
+}
+
+.game-tile:hover .play-button {
+    display: block;
+}
+
+.game-tile:hover img {
+    transform: scale(1.65); /* Zooms the image */
+    opacity: 0.5; /* Adjust for desired level of grey-out */
+}
+
+.game-title a:visited a:hover a:active {
+    color: white;
+
+}
+
 .game-tile img {
     width: 100%;
     height: auto;
-    border-bottom: 1px solid white; /* Optional: Adds a line between image and title */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+
 }
 
 .game-tile .game-title {
-    padding: 10px; /* Padding inside the tile */
+    padding: 10px;
     text-align: center;
-    font-weight: bold;
-    color: #333;
+    font-weight: 500;
+    color: white;
+    transition: transform 0.3s ease;
+
 }
+
+.game-tile:hover .game-title {
+    transform: translateY(100%); /* Slides the title down off the screen */
+}
+
 
 /* ... (any additional styles) ... */
 
