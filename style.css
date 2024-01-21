@@ -168,15 +168,14 @@ h2{
 #countdown{
     font-family: 'Montserrat';
     font-weight: 800;
-    font-size:4em;
+    font-size:5em;
     font-style:italic;
-    margin-top:50px;
 }
 
 #startCountdown{
         font-family: 'Montserrat';
         font-weight: 800;
-        font-size:4em;
+        font-size:6em;
         font-style:italic;
         margin-top:50px;
 }
@@ -248,6 +247,17 @@ h2{
     font-weight: 800; /* Bold text */
 
 }
+#gamescore-react{
+    margin-top:30px;
+}
+
+#gamescore{
+    margin-top:1em;
+    font-size:3em;
+    font-weight: 800;
+    font-family:'Montserrat', Arial, sans-serif;
+}
+
 
 
 #result {
@@ -270,6 +280,8 @@ body {
     box-sizing: border-box;
 }
 
+
+
 .navbar {
     width: 50%;
     margin: 0 auto; /* Center the navbar */
@@ -282,6 +294,61 @@ body {
     justify-content: flex-start;
     padding: 0 10px;
 }
+
+footer {
+    width: 100%;
+    padding: 50px 0;
+    text-align: center;
+    bottom:0px;
+    position: fixed;
+    display: block;
+    border-radius: 25px 25px 0 0;
+    background: rgba(255, 255, 255, 0.445);
+    background-size: 400% 400%;
+}
+.social-links a {
+    margin: 0 10px;
+}
+
+.social-links img {
+    width: 30px; /* Adjust as needed */
+    height: auto;
+}
+
+
+.text-links a {
+    
+    display: inline; /* Display links inline */
+    margin: 0 10px; /* Spacing between links */
+    color: white; /* Change color as needed */
+    text-decoration: none;
+    font-size:0.8em;
+    font-weight: 600; /* Bold text */
+    font-family: 'Montserrat', sans-serif; /* Montserrat font */
+}
+
+.hide {
+    display: none;
+    position: absolute;
+    margin-top: -50px; /* Adjust as needed */
+    color: black; /* Tooltip text color */
+    background-color: white; /* Tooltip background */
+    padding: 5px;
+    border-radius: 25px;
+    white-space: nowrap;
+}
+
+.link-container {
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.link-container:hover .hide {
+    display: block;
+    left:-50px;
+}
+
 
 
 .home-button {

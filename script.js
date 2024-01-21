@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const countdownInterval = setInterval(() => {
             countdownValue--;
+            
             if (countdownValue <= 0) {
                 clearInterval(countdownInterval);
                 startCountdown.style.display = 'none'; // Hide the countdown
@@ -82,6 +83,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+
+    // Example embed codes for GIFs
+    const celebrationGIFs = [
+        '<iframe src="https://giphy.com/embed/xT77XWum9yH7zNkFW0" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>'
+        // Add more celebration GIFs here
+    ];
+    const tryAgainGIFs = [
+        '<iframe src="https://giphy.com/embed/VL48WGMDjD64umCEkv" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>'
+        // Add more 'try again' GIFs here
+    ];
+
+
     function endGame() {
         // Hide game elements
         document.getElementById('gameImage').style.display = 'none';
@@ -100,6 +113,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //play confetti animation and some fireworks
         //display the  score 
+
+        const gamescoreReactElement = document.getElementById('gamescore-react');
+    let chosenGif;
+
+    // Define a good score, e.g., more than half of the maps guessed correctly
+    const goodScoreThreshold = Math.ceil(mapImages.length / 2);
+
+    if (score >= goodScoreThreshold) {
+        // Select a random celebration GIF
+        chosenGif = celebrationGIFs[Math.floor(Math.random() * celebrationGIFs.length)];
+    } else {
+        // Select a random 'try again' GIF
+        chosenGif = tryAgainGIFs[Math.floor(Math.random() * tryAgainGIFs.length)];
+    }
+
+    // Set the chosen GIF as the content for 'gamescore-react' container
+    gamescoreReactElement.innerHTML = chosenGif;
 
 
 
