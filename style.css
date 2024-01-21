@@ -148,48 +148,6 @@ h2{
     
 }
 
-
-
-.heading-text span {
-    display: inline-block;
-    padding-right:5px;
-    animation: bulge 1.5s ease-in-out infinite;
-}
-
-@keyframes bulge {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2); /* Adjust for the desired bulge effect */
-    }
-}
-
-/* Staggered animation delays for each letter and emoji */
-.heading-text span:nth-child(1) { animation-delay: 0s; }    /* V */
-.heading-text span:nth-child(2) { animation-delay: 0.05s; } /* i */
-.heading-text span:nth-child(3) { animation-delay: 0.1s; }  /* d */
-.heading-text span:nth-child(4) { animation-delay: 0.15s; } /* e */
-.heading-text span:nth-child(5) { animation-delay: 0.2s; }  /* o */
-.heading-text span:nth-child(6) { animation-delay: 0.25s; } /* Space */
-.heading-text span:nth-child(7) { animation-delay: 0.3s; }  /* G */
-.heading-text span:nth-child(8) { animation-delay: 0.35s; } /* a */
-.heading-text span:nth-child(9) { animation-delay: 0.4s; }  /* m */
-.heading-text span:nth-child(10) { animation-delay: 0.45s; } /* e */
-.heading-text span:nth-child(11) { animation-delay: 0.5s; } /* Space */
-.heading-text span:nth-child(12) { animation-delay: 0.55s; } /* G */
-.heading-text span:nth-child(13) { animation-delay: 0.6s; } /* u */
-.heading-text span:nth-child(14) { animation-delay: 0.65s; } /* e */
-.heading-text span:nth-child(15) { animation-delay: 0.7s; } /* s */
-.heading-text span:nth-child(16) { animation-delay: 0.75s; } /* s */
-.heading-text span:nth-child(17) { animation-delay: 0.8s; } /* e */
-.heading-text span:nth-child(18) { animation-delay: 0.85s; } /* r */
-.heading-text span:nth-child(19) { animation-delay: 0.9s; } /* Space */
-.heading-text span:nth-child(20) { animation-delay: 0.95s; } /* 🕹️ Emoji */
-
-
-
-
 .instructions {
     text-align: center;
     font-size: 18px; /* Adjust size as needed */
