@@ -129,7 +129,7 @@ h2{
 #title{
     font-family: 'Montserrat';
     font-weight: 300;
-    font-size:1.8em;
+    font-size:1.6em;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -151,7 +151,7 @@ h2{
 .instructions {
     text-align: center;
     font-size: 18px; /* Adjust size as needed */
-    margin-bottom: 5%;
+    margin-bottom: 3%;
 }
 
 .game-container {
@@ -290,6 +290,76 @@ body {
     box-sizing: border-box;
 }
 
+.link-copy-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom:5px;
+}
+
+.link-copy {
+    display: inline-flex;
+    align-items: center;
+    border: 5px solid white;
+    border-radius: 25px; /* Adjust if necessary */
+    background-color: rgba(255, 255, 255, 0);
+    margin: 0 auto;
+    padding: 0; /* Adjust padding for better alignment */
+}
+
+#shareText {
+    color: white;
+    margin-right: 0;
+    padding: 10px 25px;
+    font-size: 1.1em;
+    font-weight: 800;
+}
+
+#copyButton {
+    border: none;
+    background: white;
+    color: black;/* :rgb(232,68,120); */
+    font-size: 0.9em;
+    margin-right:-2px;
+    padding: 10px 15px; /* Adjusted padding for better fit and width */
+    cursor: pointer;
+    border-radius: 25px; /* Match this with the container's border-radius */
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: auto; /* Adjust width as needed */
+}
+
+#copyButton i {
+    font-size: 1.45em; /* Icon size */
+}
+
+#copyButton:hover {
+    background: #f2f2f2;
+}
+
+#copiedText {
+    display: none;
+    color: white;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    padding: 14px;
+}
+
+
+/* Animation */
+@keyframes swipeDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
 
 
 .navbar {
@@ -302,6 +372,14 @@ body {
     align-items: center;
     justify-content: flex-start;
     padding: 0 10px;
+}
+
+.navbar a {
+    display: flex;  /* Aligns the anchor tag with flex properties */
+    align-items: center;  /* Centers the content vertically */
+    height: 100%;  /* Ensures the anchor tag takes full height of the navbar */
+    text-decoration: none;  /* Removes underline from the link */
+    color: inherit;  /* Inherits the color from parent elements */
 }
 
 footer {
@@ -339,9 +417,9 @@ footer {
 .hide {
     display: none;
     position: absolute;
-    margin-top: -50px; /* Adjust as needed */
-    color: black; /* Tooltip text color */
-    background-color: white; /* Tooltip background */
+    margin-top: -60px; /* Adjust as needed */
+    color: white; /* Tooltip text color */
+    background-color: transparent; /* Tooltip background */
     padding: 5px;
     border-radius: 25px;
     white-space: nowrap;
@@ -351,6 +429,7 @@ footer {
     position: relative;
     display: inline-block;
     margin: 0 10px;
+    font-size:1.2em;
 }
 
 .link-container:hover .hide {
@@ -419,7 +498,7 @@ footer {
     background: rgba(255, 255, 255, 0.445);
     border-radius: 10px; /* Rounded corners */
     overflow: hidden; /* Ensures the image corners are also rounded */
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow */
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2); /* Optional: Adds a subtle shadow */
     /* Adjust the size of each game tile if necessary */
 }
 
