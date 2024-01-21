@@ -47,6 +47,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function startGuessCountdown() {
         clearInterval(guessCountdown); // Clear any existing interval
 
+        let correctMap = mapImages[currentImageIndex].split('/').pop().split('.')[0].toLowerCase().replace(/\s+/g, '');
+        
+        // Split the correctMap name by '-' and take the first part as the base name
+        let baseCorrectMap = correctMap.split('-')[0];
+
+
         let timeLeft = 10;
         document.getElementById('countdown').textContent = `${timeLeft}`;
         guessCountdown = setInterval(function () {
@@ -55,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (timeLeft <= 0) {
                 clearInterval(guessCountdown);
-                displayResult('Time is up! Moving to the next map..', 'wrong');
+                displayResult(`Time is up! It was ${baseCorrectMap} `, 'wrong');
                 // commenting this as it was being called twice moveToNextImage();
             }
         }, 1000);
@@ -236,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Delay the start of the countdown to allow the shake animation to play
             setTimeout(() => {
                 shakeScreen(); // Add shake effect
-                startResultCountdown(`${message}, starting next map `);
+                startResultCountdown(`${message} starting next map `);
             }, 100); // Delay should be equal to or slightly more than the shake animation duration
 
             return; // Early return
@@ -259,21 +265,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('submitGuess').addEventListener('click', function () {
         if (isResultDisplayed || waitingForNextImage) return;
-
+    
         clearInterval(guessCountdown);
         let inputMapName = document.getElementById('mapGuess').value.toLowerCase().replace(/\s+/g, '');
         let correctMap = mapImages[currentImageIndex].split('/').pop().split('.')[0].toLowerCase().replace(/\s+/g, '');
-
-        if (inputMapName === correctMap) {
+        
+        // Split the correctMap name by '-' and take the first part as the base name
+        let baseCorrectMap = correctMap.split('-')[0];
+    
+        if (inputMapName === baseCorrectMap) {
             displayResult('Correct', 'correct');
             score++;
         } else {
-            displayResult(`Wrong, the map was ${correctMap}`, 'wrong');
+            let difficultyLevel = correctMap.split('-')[1] ? ` (${correctMap.split('-')[1]} difficulty)` : '';
+            displayResult(`Wrong, the map was ${baseCorrectMap}${difficultyLevel}`, 'wrong');
         }
+    
         isResultDisplayed = true;
         moveToNextImage();
     });
-
+    
 
     document.getElementById('mapGuess').addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {

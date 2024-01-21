@@ -22,3 +22,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// ... Your existing JavaScript ...
+
+// After showing "Copied!", reset to original state
+setTimeout(() => {
+    document.querySelector('.link-copy').style.display = 'flex';
+    copiedText.style.display = 'none';
+}, 2000);
+
+// ...
