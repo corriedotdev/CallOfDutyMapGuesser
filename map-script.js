@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function startGuessCountdown() {
         clearInterval(guessCountdown); // Clear any existing interval
+        waitingForNextImage = false;
 
         let correctMap = mapImages[currentImageIndex].split('/').pop().split('.')[0].toLowerCase().replace(/\s+/g, '');
         
@@ -62,6 +63,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (timeLeft <= 0) {
                 clearInterval(guessCountdown);
                 displayResult(`Time is up! It was ${baseCorrectMap} `, 'wrong');
+                waitingForNextImage = true;
+
                 // commenting this as it was being called twice moveToNextImage();
             }
         }, 1000);
@@ -278,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function () {
             score++;
         } else {
             let difficultyLevel = correctMap.split('-')[1] ? ` (${correctMap.split('-')[1]} difficulty)` : '';
-            displayResult(`Wrong, the map was ${baseCorrectMap}${difficultyLevel}`, 'wrong');
+            displayResult(`Wrong, it was ${baseCorrectMap}${difficultyLevel}`, 'wrong');
         }
     
         isResultDisplayed = true;

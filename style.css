@@ -3,24 +3,40 @@
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
 }
 
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-50px); }
-    50% { transform: translateX(50px); }
-    75% { transform: translateX(-50px); }
-    
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-50px);
+    }
+
+    50% {
+        transform: translateX(50px);
+    }
+
+    75% {
+        transform: translateX(-50px);
+    }
+
 }
 
 .shake {
-    animation: shake 1.82s; /* This duration should match the timeout in the JavaScript */
+    animation: shake 1.82s;
+    /* This duration should match the timeout in the JavaScript */
 }
 
 
@@ -29,6 +45,7 @@
         transform: translateX(100%);
         opacity: 0;
     }
+
     to {
         transform: translateX(0);
         opacity: 1;
@@ -40,6 +57,7 @@
         transform: translateX(0);
         opacity: 1;
     }
+
     to {
         transform: translateX(-100%);
         opacity: 0;
@@ -49,12 +67,14 @@
 
 
 .offscreen-right {
-    transform: translateX(100%); /* Move image to the right, out of view */
+    transform: translateX(100%);
+    /* Move image to the right, out of view */
 }
 
 
 #gameImage {
-    animation-duration: 1s; /* Adjust the timing as needed */
+    animation-duration: 1s;
+    /* Adjust the timing as needed */
     animation-fill-mode: forwards;
 }
 
@@ -82,7 +102,8 @@
     right: 0;
     bottom: 0;
     overflow: hidden;
-    pointer-events: none; /* Allows clicks to pass through */
+    pointer-events: none;
+    /* Allows clicks to pass through */
 }
 
 
@@ -90,46 +111,54 @@
 ::selection {
     color: #e73c7e;
     background: white;
-  }
+}
+
+
+html, body {
+    height: 100%; /* Ensure the html and body take up full height */
+    margin: 0; /* Reset default margin */
+}
 
 body {
-    font-family: 'Montserrat',Arial, sans-serif;
-    color:white;
+    font-family: 'Montserrat', Arial, sans-serif;
+    color: white;
     text-align: center;
-   /* Animated Gradient Background */
+    /* Animated Gradient Background */
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 200% 200%; /* Adjusted background size */
+    background-size: 200% 200%;
+    /* Adjusted background size */
     animation: gradient 15s ease infinite;
-    background-repeat: no-repeat; /* Prevents the background from tiling */
-    background-attachment: fixed; /* Keeps the background fixed during */
+    background-repeat: no-repeat;
+    /* Prevents the background from tiling */
+    background-attachment: fixed;
+    /* Keeps the background fixed during */
 }
 
-h1{
+h1 {
     font-family: 'Montserrat';
     font-weight: 300;
-    font-size:4em;
+    font-size: 4em;
 }
 
-h2{
+h2 {
     font-family: 'Montserrat';
-    font-style: italic;
     font-weight: 600;
-    font-size:2.4em;
+    font-size: 2.4em;
     display: block;
-    margin-top:-50px;
 }
 
-#score{
+#score {
     font-family: 'Montserrat';
     font-weight: 800;
-    font-size:1.8em;
-    padding:20px;
+    font-size: 1.8em;
+    padding: 20px;
 }
 
-#title{
-    font-family: 'Montserrat';
+#title {
+    font-family: 'Montserrat', sans-serif;
+    /* Montserrat font */
     font-weight: 300;
-    font-size:1.6em;
+    font-size: 1.6em;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -141,131 +170,176 @@ h2{
 
 .heading-text {
     text-align: center;
-    font-size: 60px; /* Adjust size as needed */
+    font-size: 60px;
+    /* Adjust size as needed */
     font-weight: 800;
     margin-top: 10%;
     margin-bottom: 2%;
-    
+
 }
 
 .instructions {
     text-align: center;
-    font-size: 18px; /* Adjust size as needed */
+    font-size: 18px;
+    /* Adjust size as needed */
     margin-bottom: 3%;
 }
 
 .game-container {
-    display:none;
+    display: none;
     margin: auto;
-    width: 50%;
+    width: 70%;
 }
 
 #gameImage {
     max-width: 100%;
     height: auto;
-    border-radius: 30px; /* Beveled corners */
+    border-radius: 30px;
+    /* Beveled corners */
     filter: drop-shadow(5px 5px 5px #222);
 
 }
 
-#result{
+#result {
     font-family: 'Montserrat';
     font-weight: 800;
-    font-size:1.4em;
+    font-size: 1.4em;
 }
 
-#countdown{
+#countdown {
     font-family: 'Montserrat';
     font-weight: 800;
-    font-size:5em;
-    font-style:italic;
+    font-size: 5em;
+    font-style: italic;
 }
 
-#startCountdown{
-        font-family: 'Montserrat';
-        font-weight: 800;
-        font-size:6em;
-        font-style:italic;
-        margin-top:5%;
+#startCountdown {
+    font-family: 'Montserrat';
+    font-weight: 800;
+    font-size: 6em;
+    font-style: italic;
+    margin-top: 5%;
 }
 
 #mapGuess {
-    background-color: transparent; /* Keeps the background transparent */
-    border: none; /* Removes the border */
-    outline: none; /* Removes the outline to maintain the style on focus */
-    color: white; /* Light grey color with some opacity */
-    font-family: 'Montserrat', sans-serif; /* Uses Montserrat font */
-    font-weight: 700; /* Light font weight */
-    font-size:4em;
-    padding: 10px; /* Adds some padding inside the text box */
-    margin-top:20px;
-    text-align: center; /* Centers the text inside the input */
-    width: 60%; /* Adjust width as needed */
-    box-sizing: border-box; /* Ensures padding doesn't affect overall width */
+    background-color: transparent;
+    /* Keeps the background transparent */
+    border: none;
+    /* Removes the border */
+    outline: none;
+    /* Removes the outline to maintain the style on focus */
+    color: white;
+    /* Light grey color with some opacity */
+    font-family: 'Montserrat', sans-serif;
+    /* Uses Montserrat font */
+    font-weight: 700;
+    /* Light font weight */
+    font-size: 4em;
+    padding: 10px;
+    /* Adds some padding inside the text box */
+    margin-top: 20px;
+    text-align: center;
+    /* Centers the text inside the input */
+    width: 60%;
+    /* Adjust width as needed */
+    box-sizing: border-box;
+    /* Ensures padding doesn't affect overall width */
 }
 
 #mapGuess::placeholder {
-    color: rgba(255, 255, 255, 0.7); /* Change to desired placeholder color */
-    opacity: 0.4; /* Ensures full visibility of the color */
-    font-family: 'Montserrat', sans-serif; /* Applies Montserrat font to placeholder */
-    font-weight: 700; /* Light font weight for the placeholder */
-    text-align: center; /* Aligns placeholder text to the left */
-    font-size:1em;
+    color: rgba(255, 255, 255, 0.7);
+    /* Change to desired placeholder color */
+    opacity: 0.4;
+    /* Ensures full visibility of the color */
+    font-family: 'Montserrat', sans-serif;
+    /* Applies Montserrat font to placeholder */
+    font-weight: 700;
+    /* Light font weight for the placeholder */
+    text-align: center;
+    /* Aligns placeholder text to the left */
+    font-size: 1em;
 
 }
 
 #submitGuess {
-    background-color: transparent; /* Makes the background transparent */
-    font-family: 'Montserrat', sans-serif; /* Uses Montserrat font */
-    font-size:1.2em;
-    color: white; /* Sets the text color */
-    border: 3px solid white; /* Adds a border */
-    border-radius: 25px; /* Beveled corners */
-    margin-top:20px;
-    padding: 2px 30px; /* Padding inside the button */
-    font-weight: 800; /* Bold text */
-    font-family: 'Montserrat', sans-serif; /* Montserrat font */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    background-color: transparent;
+    /* Makes the background transparent */
+    font-family: 'Montserrat', sans-serif;
+    /* Uses Montserrat font */
+    font-size: 1.6em;
+    color: white;
+    /* Sets the text color */
+    border: 3px solid white;
+    /* Adds a border */
+    border-radius: 25px;
+    /* Beveled corners */
+    margin-top: 20px;
+    padding: 2px 30px;
+    /* Padding inside the button */
+    font-weight: 800;
+    /* Bold text */
+    font-family: 'Montserrat', sans-serif;
+    /* Montserrat font */
+    cursor: pointer;
+    /* Changes cursor to pointer on hover */
+    transition: background-color 0.3s, color 0.3s;
+    /* Smooth transition for hover effect */
 }
 
 #submitGuess:hover {
-    background-color: white; /* Background color on hover */
-    color: black; /* Text color on hover */
-    font-weight: 800; /* Bold text */
+    background-color: white;
+    /* Background color on hover */
+    color: black;
+    /* Text color on hover */
+    font-weight: 800;
+    /* Bold text */
 
 }
+
 #startButton {
-    background-color: transparent; /* Makes the background transparent */
-    font-family: 'Montserrat', sans-serif; /* Uses Montserrat font */
-    font-size:3em;
-    color: white; /* Sets the text color */
-    border: 7px solid white; /* Adds a border */
-    border-radius: 100px; /* Beveled corners */
-    margin-top:5%;
-    font-weight: 800; /* Bold text */
-    font-family: 'Montserrat', sans-serif; /* Montserrat font */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    background-color: transparent;
+    /* Makes the background transparent */
+    font-family: 'Montserrat', sans-serif;
+    /* Uses Montserrat font */
+    font-size: 3em;
+    color: white;
+    /* Sets the text color */
+    border: 7px solid white;
+    /* Adds a border */
+    border-radius: 100px;
+    /* Beveled corners */
+    margin-top: 5%;
+    font-weight: 800;
+    /* Bold text */
+    font-family: 'Montserrat', sans-serif;
+    /* Montserrat font */
+    cursor: pointer;
+    /* Changes cursor to pointer on hover */
+    transition: background-color 0.3s, color 0.3s;
+    /* Smooth transition for hover effect */
     width: 200px;
     height: 200px;
 }
 
 #startButton:hover {
-    background-color: white; /* Background color on hover */
-    color: black; /* Text color on hover */
-    font-weight: 800; /* Bold text */
-
-}
-#gamescore-react{
-    margin-top:30px;
-}
-
-#gamescore{
-    margin-top:1em;
-    font-size:3em;
+    background-color: white;
+    /* Background color on hover */
+    color: #DA9FC2;
+    /* Text color on hover */
     font-weight: 800;
-    font-family:'Montserrat', Arial, sans-serif;
+    /* Bold text */
+
+}
+
+#gamescore-react {
+    margin-top: 30px;
+}
+
+#gamescore {
+    margin-top: 1em;
+    font-size: 3em;
+    font-weight: 800;
+    font-family: 'Montserrat', Arial, sans-serif;
 }
 
 
@@ -283,8 +357,20 @@ h2{
     color: rgb(136, 41, 41);
 }
 
+
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure container takes at least the viewport height */
+}
+
+.content-wrap {
+    flex: 1; /* Allows content to expand and push the footer down */
+}
+
 body {
-    font-family:'Montserrat', Arial, sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -294,17 +380,19 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    margin-bottom:5px;
+    margin-bottom: 5px;
 }
 
 .link-copy {
     display: inline-flex;
     align-items: center;
     border: 5px solid white;
-    border-radius: 25px; /* Adjust if necessary */
+    border-radius: 25px;
+    /* Adjust if necessary */
     background-color: rgba(255, 255, 255, 0);
     margin: 0 auto;
-    padding: 0; /* Adjust padding for better alignment */
+    padding: 0;
+    /* Adjust padding for better alignment */
 }
 
 #shareText {
@@ -318,20 +406,25 @@ body {
 #copyButton {
     border: none;
     background: white;
-    color: black;/* :rgb(232,68,120); */
+    color: black;
+    /* :rgb(232,68,120); */
     font-size: 0.9em;
-    margin-right:-2px;
-    padding: 10px 15px; /* Adjusted padding for better fit and width */
+    margin-right: -2px;
+    padding: 10px 15px;
+    /* Adjusted padding for better fit and width */
     cursor: pointer;
-    border-radius: 25px; /* Match this with the container's border-radius */
+    border-radius: 25px;
+    /* Match this with the container's border-radius */
     align-items: center;
     justify-content: center;
     display: flex;
-    width: auto; /* Adjust width as needed */
+    width: auto;
+    /* Adjust width as needed */
 }
 
 #copyButton i {
-    font-size: 1.45em; /* Icon size */
+    font-size: 1.45em;
+    /* Icon size */
 }
 
 #copyButton:hover {
@@ -353,6 +446,7 @@ body {
         transform: translateY(-100%);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -364,9 +458,12 @@ body {
 
 .navbar {
     width: 50%;
-    margin: 0 auto; /* Center the navbar */
-    background-color:transparent; /* Semi-transparent white */
-    backdrop-filter: blur(50px); /* Apply blur effect */
+    margin: 0 auto;
+    /* Center the navbar */
+    background-color: transparent;
+    /* Semi-transparent white */
+    backdrop-filter: blur(50px);
+    /* Apply blur effect */
     height: 85px;
     display: flex;
     align-items: center;
@@ -375,51 +472,63 @@ body {
 }
 
 .navbar a {
-    display: flex;  /* Aligns the anchor tag with flex properties */
-    align-items: center;  /* Centers the content vertically */
-    height: 100%;  /* Ensures the anchor tag takes full height of the navbar */
-    text-decoration: none;  /* Removes underline from the link */
-    color: inherit;  /* Inherits the color from parent elements */
+    display: flex;
+    /* Aligns the anchor tag with flex properties */
+    align-items: center;
+    /* Centers the content vertically */
+    height: 100%;
+    /* Ensures the anchor tag takes full height of the navbar */
+    text-decoration: none;
+    /* Removes underline from the link */
+    color: inherit;
+    /* Inherits the color from parent elements */
 }
 
 footer {
     width: 100%;
     padding: 50px 0;
     text-align: center;
-    bottom:0px;
-    position: fixed;
-    display: block;
     border-radius: 25px 25px 0 0;
     background: rgba(255, 255, 255, 0.445);
     background-size: 400% 400%;
 }
+
 .social-links a {
     margin: 0 10px;
 }
 
 .social-links img {
-    width: 30px; /* Adjust as needed */
+    width: 30px;
+    /* Adjust as needed */
     height: auto;
 }
 
 
 .text-links a {
-    
-    display: inline; /* Display links inline */
-    margin: 0 10px; /* Spacing between links */
-    color: white; /* Change color as needed */
+
+    display: inline;
+    /* Display links inline */
+    margin: 0 10px;
+    /* Spacing between links */
+    color: white;
+    /* Change color as needed */
     text-decoration: none;
-    font-size:0.8em;
-    font-weight: 600; /* Bold text */
-    font-family: 'Montserrat', sans-serif; /* Montserrat font */
+    font-size: 0.8em;
+    font-weight: 600;
+    /* Bold text */
+    font-family: 'Montserrat', sans-serif;
+    /* Montserrat font */
 }
 
 .hide {
     display: none;
     position: absolute;
-    margin-top: -60px; /* Adjust as needed */
-    color: white; /* Tooltip text color */
-    background-color: transparent; /* Tooltip background */
+    margin-top: -60px;
+    /* Adjust as needed */
+    color: white;
+    /* Tooltip text color */
+    background-color: transparent;
+    /* Tooltip background */
     padding: 5px;
     border-radius: 25px;
     white-space: nowrap;
@@ -429,32 +538,42 @@ footer {
     position: relative;
     display: inline-block;
     margin: 0 10px;
-    font-size:1.2em;
+    font-size: 1.2em;
 }
 
 .link-container:hover .hide {
     display: block;
-    left:-50px;
+    left: -50px;
 }
 
 
 
 .home-button {
-    background-color: transparent; /* Makes the background transparent */
-    font-family: 'Montserrat', sans-serif; /* Uses Montserrat font */
-    font-size:1em;
-    color: white; /* Sets the text color */
-    border: 0 solid white; /* Adds a border */
-    border-radius: 25px; /* Beveled corners */
-    float:left;
-    font-weight: 600; /* Bold text */
-    font-family: 'Montserrat', sans-serif; /* Montserrat font */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    background-color: transparent;
+    /* Makes the background transparent */
+    font-family: 'Montserrat', sans-serif;
+    /* Uses Montserrat font */
+    font-size: 1em;
+    color: white;
+    /* Sets the text color */
+    border: 0 solid white;
+    /* Adds a border */
+    border-radius: 25px;
+    /* Beveled corners */
+    float: left;
+    font-weight: 600;
+    /* Bold text */
+    font-family: 'Montserrat', sans-serif;
+    /* Montserrat font */
+    cursor: pointer;
+    /* Changes cursor to pointer on hover */
+    transition: background-color 0.3s, color 0.3s;
+    /* Smooth transition for hover effect */
 }
 
 .home-button:hover {
-    color: rgba(255, 255, 255, 0.514); /* Text color on hover */
+    color: rgba(255, 255, 255, 0.514);
+    /* Text color on hover */
 
 }
 
@@ -464,46 +583,58 @@ footer {
 
 .site-name {
     font-size: 24px;
-    margin-left: 20px; /* Space between text and logo */
+    margin-left: 20px;
+    /* Space between text and logo */
 }
 
 
 
 .home img {
-    height: 30px; /* Adjust as needed */
+    height: 30px;
+    /* Adjust as needed */
     text-align: left;
 }
 
 .site-name {
     font-size: 24px;
-    margin-right: 20px; /* Space between text and logo */
+    margin-right: 20px;
+    /* Space between text and logo */
 }
 
 .logo img {
-    height: 50px; /* Adjust as needed */
+    height: 50px;
+    /* Adjust as needed */
 }
 
 .game-selection {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    grid-gap: 20px; /* Spacing between tiles */
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 columns */
+    grid-gap: 20px;
+    /* Spacing between tiles */
     padding: 20px;
-    width: 50%; /* Set the width of the grid to 50% of its container */
-    margin: auto; /* Center the grid horizontally */
+    width: 50%;
+    /* Set the width of the grid to 50% of its container */
+    margin: auto;
+    /* Center the grid horizontally */
 
 }
 
 .game-tile {
     position: relative;
     background: rgba(255, 255, 255, 0.445);
-    border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Ensures the image corners are also rounded */
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.2); /* Optional: Adds a subtle shadow */
+    border-radius: 10px;
+    /* Rounded corners */
+    overflow: hidden;
+    /* Ensures the image corners are also rounded */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    /* Optional: Adds a subtle shadow */
     /* Adjust the size of each game tile if necessary */
 }
 
 .game-tile a {
-    text-decoration: none; /* This removes the underline from all <a> tags within .game-tile */
+    text-decoration: none;
+    /* This removes the underline from all <a> tags within .game-tile */
     color: white;
 
 }
@@ -513,10 +644,13 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 80px; /* Enlarged size */
+    font-size: 80px;
+    /* Enlarged size */
     display: none;
-    color: white; /* Adjust color as needed */
-    z-index: 10; /* Ensures the button appears above the image */
+    color: white;
+    /* Adjust color as needed */
+    z-index: 10;
+    /* Ensures the button appears above the image */
 }
 
 .game-tile:hover .play-button {
@@ -524,8 +658,10 @@ footer {
 }
 
 .game-tile:hover img {
-    transform: scale(1.65); /* Zooms the image */
-    opacity: 0.5; /* Adjust for desired level of grey-out */
+    transform: scale(1.65);
+    /* Zooms the image */
+    opacity: 0.5;
+    /* Adjust for desired level of grey-out */
 }
 
 .game-title a:visited a:hover a:active {
@@ -550,9 +686,45 @@ footer {
 }
 
 .game-tile:hover .game-title {
-    transform: translateY(100%); /* Slides the title down off the screen */
+    transform: translateY(100%);
+    /* Slides the title down off the screen */
 }
 
 
 /* ... (any additional styles) ... */
 
+
+@media (min-width: 3000px) {
+    .game-container {
+        width: 30%;
+    }
+}
+
+
+@media (max-width: 1400px) {
+    #mapGuess {
+        font-size: 3em;
+    }
+
+    .game-selection {
+        width: 80%;
+    }
+}
+
+@media (max-width: 800px) {
+    .game-selection {
+        grid-template-columns: repeat(2, 1fr);
+    
+    }
+
+   /* reduce title, counter image, guess */
+
+
+}
+
+@media (max-width: 535px) {
+    .game-selection {
+        grid-template-columns: repeat(1, 1fr);
+    
+    }
+}
