@@ -14,9 +14,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,600;0,700;0,800;1,400;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,600;0,700;0,800;1,400;1,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6072376202831733"
         crossorigin="anonymous"></script>
 </head>
@@ -26,44 +28,51 @@
     <div class="page-container">
         <div class="content-wrap">
 
-    <nav class="navbar">
-        <!-- Optional button commented out -->
-        <button class="home-button" onclick="location.href='./index.html'" type="button">Home</button> 
-        <a href="index.html" style="text-decoration: none; color: inherit;"> <!-- Add this line -->
-            <div id="title">GameGuess.io</div>
-        </a> <!-- Close the anchor tag here -->
-    </nav>
-    
+            <nav class="navbar">
+                <!-- Optional button commented out -->
+                <button class="home-button" onclick="location.href='./index.html'" type="button">Home</button>
+                <a href="index.html" style="text-decoration: none; color: inherit;"> <!-- Add this line -->
+                    <div id="title">GameGuess.io</div>
+                </a> <!-- Close the anchor tag here -->
+            </nav>
 
 
-    <div class="header">
-        <h2>Modern Warfare 3</h2>
-    </div>
 
-    <div id=gamescore></div>
-    <div id="countdown"></div>
-    <div id="result"></div>
+            <div class="header">
+                <h2>Modern Warfare 3</h2>
+            </div>
 
-    <button id="startButton">start</button>
-    <div id="startCountdown"></div>
+            <div id=gamescore></div>
 
-    
-    <div class="game-container" id="game-container">
-        <div id="score">1/10</div>
+            <div class="score-timer-container">
+                <div class="spacer"></div> <!-- Spacer div -->
 
-        <div id="confetti-container"></div>
-        <div id="image-container">
-            <img id="gameImage" src="" alt="Game Screenshot">
+                <div id="countdown"></div>
+
+                <div id="score"></div>
+            </div>
+            <div id="result">Get ready..</div>
+
+
+            <button id="startButton">GO!</button>
+            <div id="startCountdown"></div>
+
+
+            <div class="game-container" id="game-container">
+
+                <div id="confetti-container"></div>
+                <div id="image-container">
+                    <img id="gameImage" src="" alt="Game Screenshot">
+                </div>
+                <input type="text" id="mapGuess" autocomplete="off" placeholder="enter guess">
+                <br>
+                <button id="submitGuess">Submit</button>
+                <div id="gamescore-react">
+
+                </div>
+
+            </div>
         </div>
-        <input type="text" id="mapGuess" autocomplete="off" placeholder="enter guess">
-        <br>
-        <button id="submitGuess">Submit</button>
-        <div id="gamescore-react">
-
-        </div>
-
-    </div>
-    </div>
     </div>
 
     <footer>
@@ -87,24 +96,24 @@
             </div>
         </div>
     </footer>
-    
+
 
 
     <script>
         const mapImages = [
-        'Games/ModernWarfare3/afghan.png',
-'Games/ModernWarfare3/derail.png',
-'Games/ModernWarfare3/estate.png',
-'Games/ModernWarfare3/favela.png',
-'Games/ModernWarfare3/invasion.png',
-'Games/ModernWarfare3/karachi.png',
-'Games/ModernWarfare3/meat.png',
-'Games/ModernWarfare3/overpass.png',
-'Games/ModernWarfare3/quarry.png',
-'Games/ModernWarfare3/rust.png',
-'Games/ModernWarfare3/shipment.png',
-'Games/ModernWarfare3/skidrow.png',
-'Games/ModernWarfare3/underpass.png',
+            'Games/ModernWarfare3/afghan.png',
+            'Games/ModernWarfare3/derail.png',
+            'Games/ModernWarfare3/estate.png',
+            'Games/ModernWarfare3/favela.png',
+            'Games/ModernWarfare3/invasion.png',
+            'Games/ModernWarfare3/karachi.png',
+            'Games/ModernWarfare3/meat.png',
+            'Games/ModernWarfare3/overpass.png',
+            'Games/ModernWarfare3/quarry.png',
+            'Games/ModernWarfare3/rust.png',
+            'Games/ModernWarfare3/shipment.png',
+            'Games/ModernWarfare3/skidrow.png',
+            'Games/ModernWarfare3/underpass.png',
 
 
         ];

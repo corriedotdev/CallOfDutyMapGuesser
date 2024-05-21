@@ -204,6 +204,7 @@ h2 {
     font-family: 'Montserrat';
     font-weight: 800;
     font-size: 1.4em;
+    padding:20px;
 }
 
 #countdown {
@@ -336,17 +337,38 @@ h2 {
 }
 
 #gamescore {
-    margin-top: 1em;
+    margin-top: 3%;
     font-size: 3em;
     font-weight: 800;
     font-family: 'Montserrat', Arial, sans-serif;
 }
 
+.score-timer-container {
+    display: flex;
+    justify-content: space-between; /* Keeps items aligned to each end and the spacer in between */
+    align-items: center; /* Vertically centers the items */
+    margin: auto; /* Centers the container */
+    max-width: 600px; /* Adjust based on your layout needs */
+}
 
+#countdown {
+    /* Ensure sufficient space; you may adjust based on your content */
+    flex: 2;
+    text-align: center; /* Centers the countdown text */
+}
+
+.spacer {
+    flex: 0.5; /* The spacer takes up space, pushing countdown and score apart */
+}
+
+#score {
+    /* Ensure it does not grow to keep it aligned to the right */
+    flex: 0; /* Prevents the score from growing and keeps it aligned right */
+    text-align: right; /* Right-aligns the score text */
+}
 
 #result {
     font-weight: bold;
-    margin-top: 20px;
 }
 
 .correct {

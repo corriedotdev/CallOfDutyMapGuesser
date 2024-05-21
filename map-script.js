@@ -277,11 +277,11 @@ document.addEventListener('DOMContentLoaded', function () {
         let baseCorrectMap = correctMap.split('-')[0];
     
         if (inputMapName === baseCorrectMap) {
-            displayResult('Correct', 'correct');
+            displayResult('✅', 'correct');
             score++;
         } else {
             let difficultyLevel = correctMap.split('-')[1] ? ` (${correctMap.split('-')[1]} difficulty)` : '';
-            displayResult(`Wrong, it was ${baseCorrectMap}${difficultyLevel}`, 'wrong');
+            displayResult(`❌ it was ${baseCorrectMap}${difficultyLevel}`, 'wrong');
         }
     
         isResultDisplayed = true;
